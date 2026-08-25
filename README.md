@@ -5,6 +5,8 @@
 
 빌드 도구나 패키지 설치 없이 순수 HTML / CSS / JavaScript로만 구성했습니다.
 
+**데모: https://ironworks-fitness.pages.dev**
+
 ## 실행 방법
 
 `index.html`을 브라우저로 열면 바로 확인할 수 있습니다.
@@ -26,6 +28,10 @@ npx serve .
 | `index.html` | 전체 마크업 (히어로 / 시설 / 가격표 / 트레이너 / 예약 폼 / 오시는 길) |
 | `assets/css/style.css` | CSS 변수 기반 디자인 토큰과 전 섹션 스타일 |
 | `assets/js/main.js` | 내비게이션, 탭, 등장 애니메이션, 폼 검증, 완료 모달 |
+| `assets/img/` | 히어로, 트레이너 4명, OG 공유용 이미지 |
+| `404.html` | 없는 경로로 들어왔을 때 보여주는 안내 페이지 |
+| `_headers` | Cloudflare Pages 캐시 · 보안 헤더 설정 |
+| `robots.txt` | 검색 색인 차단 (아래 배포 항목 참고) |
 
 ## 주요 기능
 
@@ -58,6 +64,32 @@ npx serve .
   트레이너 사진은 세로 구도(권장 640x960), OG 이미지는 1200x630을 맞춰주세요.
   로드에 실패하면 그라디언트 + 이니셜 플레이스홀더로 대체됩니다
 
+## 배포
+
+Cloudflare Pages에 GitHub 저장소를 연결해 배포합니다. `main` 브랜치에 push하면 자동으로 재배포됩니다.
+
+```bash
+git push origin main
+```
+
+빌드 과정이 없는 정적 사이트이므로 Cloudflare Pages 설정은 다음과 같습니다.
+
+| 항목 | 값 |
+| --- | --- |
+| Framework preset | None |
+| Build command | (비움) |
+| Build output directory | `/` |
+| Production branch | `main` |
+
+### 검색 노출
+
+가상의 상호와 존재하지 않는 주소·전화번호를 쓰기 때문에 검색 색인을 막아두었습니다.
+실제로 검색에 노출하려면 두 곳을 함께 수정하세요.
+
+1. `index.html`의 `<meta name="robots" content="noindex, follow" />` 제거
+2. `robots.txt`의 `Disallow: /` 제거
+
 ## 참고
 
 가상의 브랜드와 인물, 가격으로 구성된 데모입니다. 실제 사업장과 관련이 없습니다.
+사진은 Unsplash 라이선스 이미지이며, 등장 인물은 페이지 속 트레이너와 무관합니다.
