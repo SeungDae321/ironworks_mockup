@@ -1,0 +1,7 @@
+# 포트폴리오 목업 페이지입니다.
+# 가상의 상호, 주소, 연락처를 사용하므로 검색 결과 노출을 막아둡니다.
+# 검색 노출이 필요해지면 아래 Disallow 를 지우고,
+# index.html 의 <meta name="robots" content="noindex, follow" /> 도 함께 제거하세요.
+
+User-agent: *
+Disallow: /

@@ -1,0 +1,19 @@
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# 에디터
+.vscode/
+.idea/
+*.swp
+
+# 의존성 / 빌드 산출물 (현재는 사용하지 않지만 실수로 커밋되는 것을 막는다)
+node_modules/
+.wrangler/
+dist/
+
+# 로그
+*.log
+npm-debug.log*
