@@ -66,7 +66,7 @@ npx serve .
 
 ## 배포
 
-Cloudflare에 GitHub 저장소(`SeungDae321/ironworks_mocup`)를 연결해 배포합니다.
+Cloudflare에 GitHub 저장소(`SeungDae321/ironworks_mockup`)를 연결해 배포합니다.
 `main` 브랜치에 push하면 자동으로 재배포됩니다.
 
 ```bash
@@ -85,6 +85,10 @@ git push origin main
 `_headers`로 응답 헤더를 제어합니다. `/assets/*`는 1년 immutable 캐시,
 HTML은 매번 재검증하도록 두었고 기본 보안 헤더를 함께 내려보냅니다.
 이미지나 CSS를 교체했는데 반영이 늦으면 Cloudflare 대시보드에서 캐시를 비우세요.
+
+`404.html`은 현재 서빙되지 않습니다. Cloudflare Pages가 아니라 Workers 정적 자산 방식으로
+배포돼 있어서, 없는 경로는 기본 404 응답을 반환합니다.
+연결하려면 `wrangler.jsonc`에 `assets.not_found_handling` 을 `"404-page"` 로 지정해야 합니다.
 
 ### 검색 노출
 
