@@ -5,7 +5,7 @@
 
 빌드 도구나 패키지 설치 없이 순수 HTML / CSS / JavaScript로만 구성했습니다.
 
-**데모: https://ironworks-fitness.pages.dev**
+**데모: https://ironworks-mockup.seungdae33.workers.dev**
 
 ## 실행 방법
 
@@ -66,13 +66,14 @@ npx serve .
 
 ## 배포
 
-Cloudflare Pages에 GitHub 저장소를 연결해 배포합니다. `main` 브랜치에 push하면 자동으로 재배포됩니다.
+Cloudflare에 GitHub 저장소(`SeungDae321/ironworks_mocup`)를 연결해 배포합니다.
+`main` 브랜치에 push하면 자동으로 재배포됩니다.
 
 ```bash
 git push origin main
 ```
 
-빌드 과정이 없는 정적 사이트이므로 Cloudflare Pages 설정은 다음과 같습니다.
+빌드 과정이 없는 정적 사이트이므로 배포 설정은 다음과 같습니다.
 
 | 항목 | 값 |
 | --- | --- |
@@ -80,6 +81,10 @@ git push origin main
 | Build command | (비움) |
 | Build output directory | `/` |
 | Production branch | `main` |
+
+`_headers`로 응답 헤더를 제어합니다. `/assets/*`는 1년 immutable 캐시,
+HTML은 매번 재검증하도록 두었고 기본 보안 헤더를 함께 내려보냅니다.
+이미지나 CSS를 교체했는데 반영이 늦으면 Cloudflare 대시보드에서 캐시를 비우세요.
 
 ### 검색 노출
 
